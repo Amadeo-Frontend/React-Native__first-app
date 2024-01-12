@@ -1,17 +1,27 @@
 
-import { StyleSheet, View, Image} from 'react-native';
+import { StyleSheet, View, Image , TouchableOpacity} from 'react-native';
 import symbolOff from './assets/pictures/symbol-off.png'
 import symbolOn from './assets/pictures/symbol-on.png'
+import React, { useState } from 'react';
+
 
 
 export default function App() {
-  const isActive = false
+
+const [isActive, setisActive] = useState(false)
+
+  function handleSymble(){
+    setisActive((oldValue:boolean)=>{
+      return !oldValue
+    })
+  } 
   return (
     <View style={isActive ? styles.containerOn : styles.containerOff}>
-      <Image
+      <TouchableOpacity onPress={handleSymble}>  
+        <Image
       source={isActive ? symbolOn : symbolOff}
       />
-
+      </TouchableOpacity>
     </View>
   );
 }
