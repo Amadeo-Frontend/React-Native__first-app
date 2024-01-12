@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { StyleSheet, View, Image} from 'react-native';
+import symbolOff from './assets/pictures/symbol-off.png'
+import symbolOn from './assets/pictures/symbol-on.png'
+
 
 export default function App() {
+  const isActive = false
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={isActive ? styles.containerOn : styles.containerOff}>
+      <Image
+      source={isActive ? symbolOn : symbolOff}
+      />
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  containerOn: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#111',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  containerOff: {
+    flex: 1,
+    backgroundColor: '#f6f6f6',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
 });
